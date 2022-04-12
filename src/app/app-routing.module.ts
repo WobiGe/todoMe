@@ -4,6 +4,7 @@ import { AuthGuard } from "./auth/auth.guard";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full'},
+  { path: '**', redirectTo: '/auth'},
   { path: 'overview', loadChildren: () => import('./todo-list-overview/todo-list-overview.module').then(mod => mod.TodoListOverviewModule),canActivate: [AuthGuard]},
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(mod => mod.AuthModule)}
 ]

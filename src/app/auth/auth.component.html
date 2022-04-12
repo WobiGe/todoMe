@@ -1,1 +1,49 @@
-<p>auth works!</p>
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <div class="row">
+    </div>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <div class="form-group">
+        <label for="email">E-Mail:</label>
+        <input
+          class="form-control"
+          placeholder="max@mustermann.com"
+          type="email"
+          id="email"
+          name="email"
+          ngModel
+          required
+          email>
+          <br>
+        <label for="password">Password:</label>
+        <input
+          class="form-control"
+          type="password"
+          id="password"
+          name="password"
+          ngModel
+          required
+          password
+          placeholder="******"
+          >
+        <div *ngIf="signUpClicked">
+        <br>
+        <label for="password2">Password (Check):</label>
+        <input
+          class="form-control"
+          type="password"
+          id="password2"
+          name="password2"
+          ngModel
+          [required]="signUpClicked"
+          password
+          placeholder="******"
+          >
+        </div>
+          <br>
+        <button type="submit" class="btn btn-primary form-control">{{!signUpClicked ? 'Login' : 'Sign Up'}}</button>
+        <button type="button" class="btn btn-primary form-control" (click)="onSignUp()">{{!signUpClicked ? 'Sign Up' : 'Back'}}</button>
+      </div>
+    </form>
+  </div>
+</div>

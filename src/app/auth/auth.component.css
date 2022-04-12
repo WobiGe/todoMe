@@ -1,0 +1,20 @@
+.form-group{
+  position: fixed;
+  background-color: rgba(255,255,255,0.13);
+  transform: translate(-50%,-50%);
+  top: 40%;
+  left: 50%;
+  width: 30vw;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 20px rgba(8, 7, 16, 0.182);
+  padding: 15px;
+}
+
+.btn-primary{
+  margin-top: 1px;
+}
+
+input.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
