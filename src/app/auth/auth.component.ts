@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { AlertComponent } from '../shared/alert/alert.component';
 import { AuthResponseData, AuthService } from './auth.service';
 
 @Component({
@@ -12,7 +13,10 @@ import { AuthResponseData, AuthService } from './auth.service';
 export class AuthComponent implements OnInit {
   signUpClicked: boolean = false;
   error: string = "";
-  constructor(private authService: AuthService, private router: Router) { }
+  private closeSub!: Subscription;
+  @ViewChild('appPlaceholder', {read: ViewContainerRef}) errorHost!: ViewContainerRef;
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -44,6 +48,7 @@ export class AuthComponent implements OnInit {
     authObs.subscribe({
       next: (response) => {
         if (!this.signUpClicked){
+          console.log("navi")
           this.router.navigate(['/overview']);
         }else{
           this.signUpClicked = false;
@@ -53,9 +58,27 @@ export class AuthComponent implements OnInit {
       error: (errorMessage) => {
         console.log(errorMessage);
         this.error = errorMessage;
+        this.clearError();
+        //this.showErrorAlert(this.error);
       }
     })
+  }
 
+  private clearError(){
+    setTimeout(()=>{
+      this.error = "";
+    },3000)
+  }
+
+  private showErrorAlert(error:string){
+    //Display Alert with Error Code if necessary
+    const compRef = this.errorHost.createComponent(AlertComponent);
+    compRef.instance.errorMessage = error;
+
+    this.closeSub = compRef.instance.close.subscribe(()=>{
+      this.closeSub.unsubscribe();
+      this.errorHost.clear();
+    })
   }
 
 }

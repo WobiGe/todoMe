@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, tap } from "rxjs";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { BehaviorSubject, catchError, tap, throwError } from "rxjs";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
 
@@ -37,6 +37,7 @@ export class AuthService {
         returnSecureToken: true
       }
     ).pipe(
+      catchError(this.handleError),
       tap(responseData => {
         this.handleAuthentication(responseData.email, responseData.localId, responseData.idToken, +responseData.expiresIn);
     }))
@@ -51,6 +52,7 @@ export class AuthService {
       returnSecureToken: true
     }
     ).pipe(
+      catchError(this.handleError),
       tap(responseData => {
         this.handleAuthentication(responseData.email, responseData.localId, responseData.idToken, +responseData.expiresIn);
     }))
@@ -103,5 +105,27 @@ export class AuthService {
     this.user.next(user);
     this.autoLogoutUser(expiration * 1000);
     localStorage.setItem('userData', JSON.stringify(user));
+  }
+
+  private handleError(errorResponse: HttpErrorResponse){
+    let errorMsg = "An unknown error occured";
+    console.log(errorResponse)
+    if(!errorResponse.error || !errorResponse.error.error){
+      return throwError(()=> new Error(errorMsg));
+    }
+
+    switch(errorResponse.error.error.message){
+      case 'EMAIL_EXISTS':
+        errorMsg = "Email already exists!"
+        break;
+      case 'EMAIL_NOT_FOUND':
+        errorMsg = "Email not found. Please check your credentials!"
+        break;
+      case 'INVALID_PASSWORD':
+        errorMsg = "Wrong Password!"
+        break;
+    }
+
+    return throwError(()=> new Error(errorMsg));
   }
 }
