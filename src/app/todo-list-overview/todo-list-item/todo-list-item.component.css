@@ -1,0 +1,22 @@
+.todo-item-block{
+  border: 2px solid gray;
+  width: 80%;
+  text-align: center;
+  border-radius: 10px;
+}
+.todo-item-title{
+  border: 0;
+  width: 90%;
+  font-size: 32px;
+  text-align: center;
+}
+
+.todo-item-line{
+  border: 0;
+  font-size: larger;
+  width: 90%;
+}
+
+.todo-item-line:hover{
+  border: 1px solid black;
+}

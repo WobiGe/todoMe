@@ -35,7 +35,6 @@ export class AuthComponent implements OnInit {
 
     const email = authForm.value.email;
     const pw = authForm.value.password;
-    const pw2 = authForm.value.password2;
 
     if (this.signUpClicked){
       //signup user
