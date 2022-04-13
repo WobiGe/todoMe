@@ -23,6 +23,10 @@ export class TodoListOverviewComponent implements OnInit {
     this.authService.logoutUser();
   }
 
+  onAddTodoList(){
+    this.todoLists.push(new TodoListItem(1,"Titel",[""]));
+  }
+
 
 
 }
