@@ -3,6 +3,7 @@
   text-align: center;
   border-radius: 10px;
   background-color: #f5f5dc;
+  margin-top: 10px;
 }
 .todo-item-title{
   border: 0;
@@ -22,5 +23,5 @@
 }
 
 .todo-item-line:hover{
-  border: 1px solid black;
+  color: lightcoral;
 }

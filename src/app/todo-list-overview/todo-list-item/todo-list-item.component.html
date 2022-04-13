@@ -1,4 +1,5 @@
 <div class="todo-item-block">
+  <button (click)="saveChanges()">Save</button>
   <input class="todo-item-title" [value]="title">
   <div *ngFor="let line of lines; let i = index;">
     <input class="todo-item-line" type="text" [value]="line">

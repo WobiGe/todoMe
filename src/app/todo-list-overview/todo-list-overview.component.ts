@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
 import { TodoListItem } from './todo-list-item/todo-list-item.model';
 
 @Component({
@@ -12,15 +11,12 @@ export class TodoListOverviewComponent implements OnInit {
     new TodoListItem(123,"Titel",["Zeile 1", "Zeile 2", "Zeile 3"]),
     new TodoListItem(124,"Titel2",["Zeile 2", "Zeile 6", "Zeile 1"]),
     new TodoListItem(124,"Titel2",["Satz", "Pimmel", "Glutexo"]),
+    new TodoListItem(124,"Titel2",["Satz", "Pimmel", "Glutexo"]),
   ];
 
-  constructor(private authService: AuthService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onLogout(){
-    this.authService.logoutUser();
   }
 
   onAddTodoList(){

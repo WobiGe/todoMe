@@ -12,4 +12,8 @@ export class TodoListItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  saveChanges(){
+    this.title = "Test"
+  }
 }
