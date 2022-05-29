@@ -1,27 +1,33 @@
-.todo-item-block{
+.todoBox{
+  border-radius: 5%;
+  background-color: rgb(246, 246, 246);
+  margin: 1%;
+  width: 300px;
+  display: block;
+  overflow: auto;
+  float: left;
+}
+
+.todoBoxTitle{
+  text-align: center;
+  background-color: rgb(35, 113, 209);
   width: 100%;
-  text-align: center;
-  border-radius: 10px;
-  background-color: #f5f5dc;
-  margin-top: 10px;
 }
-.todo-item-title{
-  border: 0;
-  width: 99%;
+
+.title-input{
+  border: 0px;
   font-size: 32px;
+}
+
+.todoBoxContents{
+  font-size: 18px;
   text-align: center;
-  border-radius: 10px;
-  margin: 1px;
-  background-color: #f5f5dc;
+  margin-top: 15px;
 }
 
-.todo-item-line{
-  border: 0;
-  font-size: larger;
-  background-color: #f5f5dc;
-  width: 90%;
-}
-
-.todo-item-line:hover{
-  color: lightcoral;
+.btnAddTodo{
+  width: 76%;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

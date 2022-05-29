@@ -1,28 +1,54 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentRef, OnInit, ViewChild } from '@angular/core';
+import { DynamicChildLoaderDirective } from './todo-list-item.directive';
+import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
 import { TodoListItem } from './todo-list-item/todo-list-item.model';
+import { TodoListService } from './todo-list.service';
 
 @Component({
   selector: 'app-todo-list-overview',
   templateUrl: './todo-list-overview.component.html',
-  styleUrls: ['./todo-list-overview.component.css']
+  styleUrls: ['./todo-list-overview.component.css'],
 })
 export class TodoListOverviewComponent implements OnInit {
-  todoLists: TodoListItem[] = [
-    new TodoListItem(123,"Titel",["Zeile 1", "Zeile 2", "Zeile 3"]),
-    new TodoListItem(124,"Titel2",["Zeile 2", "Zeile 6", "Zeile 1"]),
-    new TodoListItem(124,"Titel2",["Satz", "Pimmel", "Glutexo"]),
-    new TodoListItem(124,"Titel2",["Satz", "Pimmel", "Glutexo"]),
-  ];
-
-  constructor() { }
+  @ViewChild(DynamicChildLoaderDirective, { static: true })
+  todoListItems!: DynamicChildLoaderDirective;
+  myTodoListsCfr: ComponentRef<TodoListItemComponent>[] = [];
+  constructor(private todoListService: TodoListService) {}
 
   ngOnInit(): void {
+    let fetchedLists: TodoListItem[] = [];
+    this.todoListService.getTodoLists().subscribe((res) => {
+      fetchedLists = res;
+      for (let index = 0; index < fetchedLists.length; index++) {
+        const compRef = this.todoListItems.viewContainerRef.createComponent(
+          TodoListItemComponent
+        );
+        compRef.instance.title = fetchedLists[index].title;
+        compRef.instance.todos = fetchedLists[index].todos;
+        this.myTodoListsCfr.push(compRef);
+      }
+    });
   }
 
-  onAddTodoList(){
-    this.todoLists.push(new TodoListItem(1,"Titel",[""]));
+  onAddTodoList() {
+    //Create TodoListItem Dynamically
+    const compRef = this.todoListItems.viewContainerRef.createComponent(
+      TodoListItemComponent
+    );
+    this.myTodoListsCfr.push(compRef);
   }
 
-
-
+  onSaveTodoLists() {
+    this.todoListService.myTodoLists = [];
+    for (let index = 0; index < this.myTodoListsCfr.length; index++) {
+      this.myTodoListsCfr[index].changeDetectorRef.detectChanges();
+      this.todoListService.myTodoLists.push(
+        new TodoListItem(
+          this.myTodoListsCfr[index].instance.title,
+          this.myTodoListsCfr[index].instance.todos
+        )
+      );
+    }
+    this.todoListService.saveTodoList();
+  }
 }
