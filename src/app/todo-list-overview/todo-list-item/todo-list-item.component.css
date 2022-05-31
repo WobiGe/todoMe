@@ -2,16 +2,22 @@
   border-radius: 5%;
   background-color: rgb(246, 246, 246);
   margin: 1%;
-  width: 300px;
+  width: 25vw;
   display: block;
   overflow: auto;
   float: left;
+  box-shadow: 0 0 10px #1b2f77;
 }
 
 .todoBoxTitle{
+  color: white;
   text-align: center;
   background-color: rgb(35, 113, 209);
-  width: 100%;
+  width: 109.5%;
+}
+
+.todoBoxTitle:focus{
+  outline: none !important;
 }
 
 .title-input{
@@ -19,15 +25,41 @@
   font-size: 32px;
 }
 
+.todo-input{
+  background-color: rgb(246, 246, 246);
+}
+.todo-input:focus{
+  outline: none !important;
+  box-shadow: 0 0 10px #719ECE;
+}
+
 .todoBoxContents{
   font-size: 18px;
   text-align: center;
-  margin-top: 15px;
+  margin: 10px;
 }
 
 .btnAddTodo{
-  width: 76%;
+  width: 90%;
+  height: 32px;
   border-radius: 5px;
-  margin-top: 5px;
+  margin-top: 3px;
   margin-bottom: 5px;
+  font-weight: bold;
+  background-color: rgb(35, 113, 209);
+}
+
+.btnRemoveTodo{
+  background-color: rgb(35, 113, 209);
+}
+
+.btnRemoveList{
+  border: none;
+  background-color: rgb(35, 113, 209) !important;
+  width: 100% !important;
+}
+
+.btnRemoveList:focus{
+  outline: none !important;
+
 }

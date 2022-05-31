@@ -1,10 +1,28 @@
 <div class="todoBox">
+  <div class="input-group">
     <input class="todoBoxTitle title-input" type="text" [(ngModel)]="title">
+    <span class="input-group-btn ">
+      <button class="btn btn-default btnRemoveList" (click)="deleteTodoList()">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
+    </span>
+  </div>
   <div class="todoBoxContents">
     <div *ngFor="let todo of todos; let i = index;trackBy:trackByIdx">
-      <input type="text" [(ngModel)]="todos[i]">
+      <div class="input-group" style="margin-top: 5px;">
+        <span class="input-group-addon todo-input">
+          <input #todoChecked [(ngModel)]="todo.checked" type="checkbox">
+        </span>
+        <input [ngStyle]="{'text-decoration': todo.checked == true ? 'line-through': ''}" class="form-control todo-input" type="text" [(ngModel)]="todo.todoString">
+        <span class="input-group-btn">
+          <button class="btn btn-primary btnRemoveTodo" [disabled]="todos.length == 1" (click)="removeTodo(i)">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </span>
+      </div>
     </div>
-    <button class="btn btn-primary btnAddTodo" (click)="addTodo()">+</button>
-    <button class="btn btn-primary btnAddTodo" (click)="deleteTodo()">-</button>
+    <button class="btn btn-primary btnAddTodo" (click)="addTodo()">
+      <span class="glyphicon glyphicon-pencil"></span>
+    </button>
   </div>
 </div>
