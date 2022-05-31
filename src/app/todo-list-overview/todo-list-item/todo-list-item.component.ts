@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoListService } from '../todo-list.service';
-import { TodoListItem } from './todo-list-item.model';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -9,9 +8,10 @@ import { TodoListItem } from './todo-list-item.model';
 })
 
 export class TodoListItemComponent implements OnInit {
+  index: number = 0;
   title: string = "TodoTitle";
   todos: string[] = [""];
-  constructor() { }
+  constructor(private todoListService: TodoListService) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +19,11 @@ export class TodoListItemComponent implements OnInit {
   addTodo(){
     this.todos.push("");
   }
+
+  deleteTodo(){
+    this.todoListService.removeList(this.index);
+  }
+
   trackByIdx(index: number, obj: any): any {
     return index;
   }

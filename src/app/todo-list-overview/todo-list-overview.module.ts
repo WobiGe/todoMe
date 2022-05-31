@@ -5,14 +5,14 @@ import { TodoListItemComponent } from './todo-list-item/todo-list-item.component
 import { CommonModule } from "@angular/common";
 import { TodoListHeaderComponent } from './todo-list-header/todo-list-header.component';
 import { FormsModule } from "@angular/forms";
-import { DynamicChildLoaderDirective } from "./todo-list-item.directive";
+import { todoListsDirective } from "./todo-list-item.directive";
 
 @NgModule({
   declarations: [
     TodoListOverviewComponent,
     TodoListItemComponent,
     TodoListHeaderComponent,
-    DynamicChildLoaderDirective
+    todoListsDirective
   ],
     imports: [
       CommonModule,

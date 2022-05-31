@@ -1,8 +1,8 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[dynamicChildLoader]'
+  selector: '[todoListsDirective]'
 })
-export class DynamicChildLoaderDirective {
+export class todoListsDirective {
   constructor(public viewContainerRef: ViewContainerRef) { }
 }

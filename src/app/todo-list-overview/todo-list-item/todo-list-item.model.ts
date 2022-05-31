@@ -1,3 +1,3 @@
 export class TodoListItem{
-  constructor(public title: string, public todos: string[]){}
+  constructor(public index: number, public title: string, public todos: string[]){}
 }
