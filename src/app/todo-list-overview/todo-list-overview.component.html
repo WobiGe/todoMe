@@ -1,6 +1,5 @@
-<app-todo-list-header></app-todo-list-header>
+<app-todo-list-header [todoListComponents]="todoListComponents"></app-todo-list-header>
 <button class="addListButton" (click)="onAddTodoList()">New List</button>
-<button class="addListButton" (click)="onUpdateTodoLists()">Save Lists</button>
 <ng-template todoListsDirective>
   <div class="col-xs-4"></div>
 </ng-template>

@@ -50,12 +50,4 @@ export class TodoListOverviewComponent implements OnInit, OnDestroy {
     this.todoListComponents.push(compref);
   }
 
-  onUpdateTodoLists() {
-    let aListArr: TodoListItem[] = [];
-    this.todoListComponents.forEach(compRef=>{
-        aListArr.push(new TodoListItem(compRef.instance.index,compRef.instance.title, compRef.instance.todos));
-    })
-    this.todoListService.updateTodoList(aListArr);
-    this.todoListComponents = [];
-  }
 }
