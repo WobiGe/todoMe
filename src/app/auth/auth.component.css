@@ -23,6 +23,7 @@ p{
   color: red;
 }
 .todo-logo{
+  border-radius: 7px;
   width: 225px;
   height: 225px;
   position: fixed;

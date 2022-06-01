@@ -6,6 +6,7 @@
   display: block;
   overflow: auto;
   float: left;
+  position:sticky;
   box-shadow: 0 0 10px #1b2f77;
 }
 

@@ -11,7 +11,7 @@ import { TodoListValues } from './todo-list-item.model';
 export class TodoListItemComponent implements OnInit {
   index: number = 0;
   title: string = "TodoTitle";
-  todos: TodoListValues[] = [];
+  todos: TodoListValues[] = [new TodoListValues(false, "")];
   constructor(private todoListService: TodoListService) { }
 
   ngOnInit(): void {
