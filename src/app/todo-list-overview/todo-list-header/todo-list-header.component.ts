@@ -11,24 +11,27 @@ import { TodoListService } from '../todo-list.service';
 export class TodoListHeaderComponent implements OnInit, OnDestroy {
   user: string = "";
   listCount: number = 0;
-  userSub: Subscription | undefined;
+  userSub: Subscription = new Subscription;
+  listCountSub: Subscription = new Subscription;
   constructor(private authService: AuthService, private todoListService: TodoListService) { }
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe(userData=>{
       this.user = userData!.email;
     })
-    this.todoListService.myTodoListsChanged.subscribe((lists)=>{
+    this.listCountSub = this.todoListService.myTodoListsChanged.subscribe((lists)=>{
       this.listCount = lists.length;
     })
   }
 
   onLogOut(){
-    this.userSub?.unsubscribe();
+    this.userSub.unsubscribe();
+    this.listCountSub.unsubscribe();
     this.authService.logoutUser();
   }
 
   ngOnDestroy(): void {
       this.userSub?.unsubscribe();
+      this.listCountSub.unsubscribe();
   }
 }

@@ -28,20 +28,6 @@
           password
           placeholder="******"
           >
-        <!-- <div *ngIf="signUpClicked">
-        <br>
-        <label for="password2">Password (Check):</label>
-        <input
-          class="form-control"
-          type="password"
-          id="password2"
-          name="password2"
-          ngModel
-          [required]="signUpClicked"
-          password
-          placeholder="******"
-          >
-        </div> -->
         <p *ngIf="error">{{error}}</p>
           <br>
         <button [ngStyle]="{'background-color': !signUpClicked ? '': 'green'}" type="submit" class="btn btn-primary form-control">{{!signUpClicked ? 'Login' : 'Sign Up'}}</button>

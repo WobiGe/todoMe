@@ -1,8 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { ComponentRef, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { AuthService } from "../auth/auth.service";
-import { TodoListItemComponent } from "./todo-list-item/todo-list-item.component";
 import { TodoListItem } from "./todo-list-item/todo-list-item.model";
 
 @Injectable({providedIn: 'root'})

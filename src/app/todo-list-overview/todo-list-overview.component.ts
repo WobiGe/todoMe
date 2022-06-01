@@ -1,4 +1,4 @@
-import { Component, ComponentRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ComponentRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { todoListsDirective } from './todo-list-item.directive';
 import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
@@ -10,7 +10,7 @@ import { TodoListService } from './todo-list.service';
   templateUrl: './todo-list-overview.component.html',
   styleUrls: ['./todo-list-overview.component.css'],
 })
-export class TodoListOverviewComponent implements OnInit {
+export class TodoListOverviewComponent implements OnInit, OnDestroy {
   @ViewChild(todoListsDirective, { static: true })
   todoListItems!: todoListsDirective;
   todoListComponents: ComponentRef<TodoListItem>[] = [];
@@ -23,8 +23,13 @@ export class TodoListOverviewComponent implements OnInit {
     this.subscription = this.todoListService.myTodoListsChanged.subscribe((lists)=>{
       this.todoLists = lists;
       this.createTodoListComponents();
-  })
-}
+    })
+  }
+
+  ngOnDestroy(): void {
+      this.subscription.unsubscribe();
+  }
+
 
   createTodoListComponents(){
     this.todoListItems.viewContainerRef.clear();
