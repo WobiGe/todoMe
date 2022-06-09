@@ -48,6 +48,8 @@ export class TodoListOverviewComponent implements OnInit, OnDestroy {
     const compref = this.todoListItems.viewContainerRef.createComponent(TodoListItemComponent);
     compref.instance.index = this.todoListItems.viewContainerRef.indexOf(compref.hostView);
     this.todoListComponents.push(compref);
+    const todoList = new TodoListItem(compref.instance.index,compref.instance.title,compref.instance.todos);
+    this.todoListService.addList(todoList);
   }
 
 }

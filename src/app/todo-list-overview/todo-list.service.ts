@@ -22,6 +22,11 @@ export class TodoListService{
     this.myTodoListsChanged.next(this.myTodoLists.slice());
   }
 
+  addList(todoList: TodoListItem){
+    this.myTodoLists.push(todoList);
+    this.myTodoListsChanged.next(this.myTodoLists.slice());
+  }
+
   updateTodoList(aTodoList: TodoListItem[]){
     this.myTodoLists = aTodoList;
     this.uploadTodoList();
