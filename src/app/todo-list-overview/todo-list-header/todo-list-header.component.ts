@@ -1,4 +1,4 @@
-import { Component, ComponentRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ComponentRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { TodoListItem } from '../todo-list-item/todo-list-item.model';
@@ -15,6 +15,7 @@ export class TodoListHeaderComponent implements OnInit, OnDestroy {
   userSub: Subscription = new Subscription;
   listCountSub: Subscription = new Subscription;
   @Input() todoListComponents: ComponentRef<TodoListItem>[] = [];
+  @Output() isSaving = new EventEmitter<boolean>();
   constructor(private authService: AuthService, private todoListService: TodoListService) { }
 
   ngOnInit(): void {
@@ -38,11 +39,16 @@ export class TodoListHeaderComponent implements OnInit, OnDestroy {
   }
 
   onUpdateTodoLists() {
+    this.isSaving.emit(true);
     let aListArr: TodoListItem[] = [];
     this.todoListComponents.forEach(compRef=>{
         aListArr.push(new TodoListItem(compRef.instance.index,compRef.instance.title, compRef.instance.todos));
     })
     this.todoListService.updateTodoList(aListArr);
     this.todoListComponents = [];
+
+    setTimeout(() => {
+      this.isSaving.emit(false);
+    }, 2000);
   }
 }

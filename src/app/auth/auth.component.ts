@@ -13,6 +13,7 @@ import { AuthResponseData, AuthService } from './auth.service';
 export class AuthComponent implements OnInit {
   signUpClicked: boolean = false;
   error: string = "";
+  isLoading: boolean = false;
   private closeSub!: Subscription;
   @ViewChild('appPlaceholder', {read: ViewContainerRef}) errorHost!: ViewContainerRef;
   constructor(private authService: AuthService,
@@ -28,6 +29,8 @@ export class AuthComponent implements OnInit {
   onSubmit(authForm: NgForm){
 
     let authObs: Observable<AuthResponseData>;
+
+    this.isLoading = true;
 
     if (!authForm.valid){
       return;
@@ -48,6 +51,7 @@ export class AuthComponent implements OnInit {
       next: (response) => {
         if (!this.signUpClicked){
           console.log("navi")
+          this.isLoading = false;
           this.router.navigate(['/overview']);
         }else{
           this.signUpClicked = false;
@@ -57,8 +61,9 @@ export class AuthComponent implements OnInit {
       error: (errorMessage) => {
         console.log(errorMessage);
         this.error = errorMessage;
+
         this.clearError();
-        //this.showErrorAlert(this.error);
+        this.isLoading = false;
       }
     })
   }
@@ -72,7 +77,7 @@ export class AuthComponent implements OnInit {
   private showErrorAlert(error:string){
     //Display Alert with Error Code if necessary
     const compRef = this.errorHost.createComponent(AlertComponent);
-    compRef.instance.errorMessage = error;
+    compRef.instance.aMessage = error;
 
     this.closeSub = compRef.instance.close.subscribe(()=>{
       this.closeSub.unsubscribe();

@@ -6,13 +6,15 @@ import { CommonModule } from "@angular/common";
 import { TodoListHeaderComponent } from './todo-list-header/todo-list-header.component';
 import { FormsModule } from "@angular/forms";
 import { todoListsDirective } from "./todo-list-item.directive";
+import { AlertComponent } from "../shared/alert/alert.component";
 
 @NgModule({
   declarations: [
     TodoListOverviewComponent,
     TodoListItemComponent,
     TodoListHeaderComponent,
-    todoListsDirective
+    todoListsDirective,
+    AlertComponent
   ],
     imports: [
       CommonModule,

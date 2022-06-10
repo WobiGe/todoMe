@@ -10,7 +10,7 @@ import { TodoListValues } from './todo-list-item.model';
 
 export class TodoListItemComponent implements OnInit {
   index: number = 0;
-  title: string = "TodoTitle";
+  title: string =  "Title";
   todos: TodoListValues[] = [new TodoListValues(false, "")];
   constructor(private todoListService: TodoListService) { }
 

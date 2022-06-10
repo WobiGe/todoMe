@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./alert.component.css']
 })
 export class AlertComponent {
-  @Input() errorMessage: string = "";
+  @Input() aMessage: string = "";
   @Output() close = new EventEmitter<void>();
 
   onClose(){

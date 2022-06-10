@@ -2,10 +2,78 @@
   position: absolute;
   right:    5vw;
   bottom:   10vh;
-  width: 250px;
-  height: 250px;
+  width: 128px;
+  height: 128px;
   border-radius: 10%;
   background-color: transparent;
   color: rgb(35, 113, 209);
-  font-size: 128px;
+  font-size: 80px;
 }
+.testC {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.modal-message{
+  position: fixed;
+  top: 80vh;
+  left: 30vw;
+  width: 30vw;
+  text-align: center;
+  z-index: 100;
+  background: transparent;
+  text-align: center;
+  color: rgb(35, 113, 209);
+}
+
+.fade-out {
+  animation: fadeOut ease 2s;
+  -webkit-animation: fadeOut ease 2s;
+  -moz-animation: fadeOut ease 2s;
+  -o-animation: fadeOut ease 2s;
+  -ms-animation: fadeOut ease 2s;
+}
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-ms-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+}}
