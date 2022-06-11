@@ -4,12 +4,23 @@
   transform: translate(-50%,-50%);
   top: 50vh;
   left: 50vw;
-  width: 35vw;
+  width: 50%;
   border-radius: 10px;
   border: 2px solid rgba(255,255,255,0.1);
   box-shadow: 0 0 20px rgba(8, 7, 16, 0.182);
   padding: 15px;
 }
+
+@media screen and (max-width: 768px) {
+  .form-group{
+    width: 90%;
+  }
+  .todo-logo{
+    width: auto !important;
+    height: 25% !important;
+  }
+}
+
 .btn-primary{
   margin-top: 1px;
 }
@@ -27,12 +38,11 @@ p{
 }
 .todo-logo{
   border-radius: 7px;
-  width: 15%;
+  width: 22%;
   height: auto;
   position: fixed;
-  top: 15vh;
+  top: 17vh;
   left: 50vw;
-  margin: 1px;
   box-shadow: 0 0 20px rgba(8, 7, 16, 0.182);
   transform: translate(-50%,-50%);
 }

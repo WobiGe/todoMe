@@ -9,6 +9,35 @@
   color: rgb(35, 113, 209);
   font-size: 80px;
 }
+
+@media screen and (max-width: 768px) {
+  .addListButton{
+    font-size: 12px;
+    width: 75vw;
+    left: 12.5%;
+    height: 32px;
+    bottom:   1vh;
+    border-radius: 0;
+    background-color:rgb(35, 113, 209);
+    color: white;
+    font-weight: bolder;
+    border-radius: 5px;
+    z-index: 110;
+  }
+  .mobile-list{
+    height: 80vh;
+    overflow-x: scroll;
+  }
+  .modal-message{
+    bottom: 0;
+    right: 25% !important;
+    width: 50vw !important;
+    text-align: center;
+    z-index: 100;
+  }
+}
+
+
 .modal-message{
   position: fixed;
   bottom: 25vh;
@@ -16,7 +45,7 @@
   width: 10vw;
   text-align: center;
   z-index: 100;
-  background: rgb(35, 113, 209);
+  background: rgba(91, 137, 194, 0.693);
   text-align: center;
   color: rgb(255, 255, 255);
   border-radius: 10px;

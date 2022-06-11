@@ -1,5 +1,4 @@
 .todoBox{
-  border-radius: 2%;
   background-color: rgb(246, 246, 246);
   margin-top: 1%;
   margin-left: 6%;
@@ -10,11 +9,22 @@
   box-shadow: 0 0 10px #1b2f77;
 }
 
+@media screen and (max-width: 768px) {
+  .todoBox{
+    width: 90vw;
+    margin-left: 5%;
+    box-shadow: 0 0 5px #1b2f77;
+  }
+}
+
 .todoBoxTitle{
   color: white;
   text-align: center;
   background-color: rgb(35, 113, 209);
   width: 100%;
+  -webkit-appearance: none;
+  border-radius: 0;
+  -webkit-border-radius:0;
 }
 
 .todoBoxTitle:focus{
@@ -25,6 +35,9 @@
   border: 0px;
   font-size: 32px;
   text-indent: 10%;
+  -webkit-appearance: none;
+  border-radius: 0;
+  -webkit-border-radius:0;
 }
 
 .todo-input{

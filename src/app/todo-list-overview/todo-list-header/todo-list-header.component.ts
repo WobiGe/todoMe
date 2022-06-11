@@ -14,6 +14,7 @@ export class TodoListHeaderComponent implements OnInit, OnDestroy {
   listCount: number = 0;
   userSub: Subscription = new Subscription;
   listCountSub: Subscription = new Subscription;
+  collapsed: boolean = true;
   @Input() todoListComponents: ComponentRef<TodoListItem>[] = [];
   @Output() isSaving = new EventEmitter<boolean>();
   constructor(private authService: AuthService, private todoListService: TodoListService) { }

@@ -1,15 +1,24 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <ul class="nav navbar-nav navbar-left">
-      <li><a>User: {{user}}</a></li>
-    </ul>
-    <ul class="nav navbar-nav">
-      <li><a>Todo-Lists: {{listCount}}</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li (click)="onLogOut()" style="cursor: pointer;"><a><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
-      <li (click)="onUpdateTodoLists()" style="cursor: pointer;"><a><span class="glyphicon glyphicon-floppy-disk"></span> Save</a></li>
-    </ul>
+    <!-- BRAND -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
+        <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
+      </button>
+      <a class="navbar-brand" style="cursor: pointer;">User: {{user}}</a>
+    </div>
+    <!-- COLLAPSIBLE NAVBAR -->
+    <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true" id="alignment-example">
+      <!-- Links -->
+      <ul class="nav navbar-nav">
+        <li><a class="navbar-brand" style="cursor: pointer;">Todo-Lists: {{listCount}}</a></li>
+        <li class="dropdown">
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li (click)="onLogOut()" style="cursor: pointer;"><a><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+        <li (click)="onUpdateTodoLists()" style="cursor: pointer;"><a><span class="glyphicon glyphicon-floppy-disk"></span> Save</a></li>
+      </ul>
+    </div>
   </div>
 </nav>
-
