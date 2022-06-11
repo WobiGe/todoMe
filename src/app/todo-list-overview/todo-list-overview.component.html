@@ -1,8 +1,6 @@
 <app-todo-list-header (isSaving)="isUploading($event)" [todoListComponents]="todoListComponents"></app-todo-list-header>
-<div class="testC">
-  <ng-template todoListsDirective></ng-template>
-</div>
-<button class="bnt btn-primary addListButton" (click)="onAddTodoList()">+</button>
-<div class="modal-message" *ngIf="saving">
-  <h3 class="fade-out">Saved!</h3>
+<ng-template todoListsDirective></ng-template>
+<button class="bnt btn-primary addListButton form-control" (click)="onAddTodoList()">+</button>
+<div *ngIf="saving" class="modal-message fade-out">
+  <h1 class="fade-out">Saved!</h1>
 </div>

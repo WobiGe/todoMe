@@ -55,6 +55,8 @@ export class AuthComponent implements OnInit {
           this.router.navigate(['/overview']);
         }else{
           this.signUpClicked = false;
+          this.isLoading = false;
+
         }
         console.log(response);
       },
@@ -74,15 +76,15 @@ export class AuthComponent implements OnInit {
     },3000)
   }
 
-  private showErrorAlert(error:string){
-    //Display Alert with Error Code if necessary
-    const compRef = this.errorHost.createComponent(AlertComponent);
-    compRef.instance.aMessage = error;
+  // private showErrorAlert(error:string){
+  //   //Display Alert with Error Code if necessary
+  //   const compRef = this.errorHost.createComponent(AlertComponent);
+  //   compRef.instance.aMessage = error;
 
-    this.closeSub = compRef.instance.close.subscribe(()=>{
-      this.closeSub.unsubscribe();
-      this.errorHost.clear();
-    })
-  }
+  //   this.closeSub = compRef.instance.close.subscribe(()=>{
+  //     this.closeSub.unsubscribe();
+  //     this.errorHost.clear();
+  //   })
+  // }
 
 }

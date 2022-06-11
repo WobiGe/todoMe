@@ -31,7 +31,6 @@ export class TodoListOverviewComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
   }
 
-
   createTodoListComponents(){
     this.todoListItems.viewContainerRef.clear();
     this.todoListComponents = [];

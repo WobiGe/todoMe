@@ -1,7 +1,7 @@
 .addListButton{
-  position: absolute;
-  right:    5vw;
-  bottom:   10vh;
+  position: fixed;
+  right:    3vw;
+  bottom:   5vh;
   width: 128px;
   height: 128px;
   border-radius: 10%;
@@ -9,30 +9,25 @@
   color: rgb(35, 113, 209);
   font-size: 80px;
 }
-.testC {
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-  box-sizing: border-box;         /* Opera/IE 8+ */
-}
-
 .modal-message{
   position: fixed;
-  top: 80vh;
-  left: 30vw;
-  width: 30vw;
+  bottom: 25vh;
+  right: 2vw;
+  width: 10vw;
   text-align: center;
   z-index: 100;
-  background: transparent;
+  background: rgb(35, 113, 209);
   text-align: center;
-  color: rgb(35, 113, 209);
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
 }
 
 .fade-out {
-  animation: fadeOut ease 2s;
-  -webkit-animation: fadeOut ease 2s;
-  -moz-animation: fadeOut ease 2s;
-  -o-animation: fadeOut ease 2s;
-  -ms-animation: fadeOut ease 2s;
+  animation: fadeOut ease 2.5s;
+  -webkit-animation: fadeOut ease 2.5s;
+  -moz-animation: fadeOut ease 2.5s;
+  -o-animation: fadeOut ease 2.5s;
+  -ms-animation: fadeOut ease 2.5s;
 }
 @keyframes fadeOut {
   0% {
